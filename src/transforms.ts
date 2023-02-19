@@ -15,7 +15,7 @@ type ListItem = {
   items: Array<ListItem>;
 };
 
-const alignType = ["left", "right", "center", "justify"]
+const alignType = ["left", "right", "center", "justify"];
 
 export type block = {
   type: string;
@@ -33,7 +33,7 @@ export type block = {
     items?: Array<string> | Array<ListItem>;
     style?: string;
     code?: string;
-    service?: "vimeo" | "youtube";
+    service?: "vimeo" | "youtube" | "instagram" | "twitter";
     source?: string;
     embed?: string;
     width?: number;
@@ -55,10 +55,13 @@ const transforms: transforms = {
   paragraph: ({ data }) => {
     const paragraphAlign = data.alignment || data.align;
 
-    if (typeof paragraphAlign !== 'undefined' && alignType.includes(paragraphAlign)) {
+    if (
+      typeof paragraphAlign !== "undefined" &&
+      alignType.includes(paragraphAlign)
+    ) {
       return `<p style="text-align:${paragraphAlign};">${data.text}</p>`;
     } else {
-      return `<p>${data.text}</p>`
+      return `<p>${data.text}</p>`;
     }
   },
 
@@ -101,9 +104,13 @@ const transforms: transforms = {
         return `<iframe src="${data.embed}" height="${data.height}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
       case "youtube":
         return `<iframe width="${data.width}" height="${data.height}" src="${data.embed}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      case "twitter":
+        return `<blockquote class="twitter-tweet" class="embed-twitter" width="${data.width}" height="${data.height}"><a href="${data.embed}"></a></blockquote>`;
+      case "instagram":
+        return `<blockquote class="instagram-media" width="${data.width}" height="${data.height}"><a href="${data.embed}/captioned"></a></blockquote>`;
       default:
         throw new Error(
-          "Only Youtube and Vime Embeds are supported right now."
+          "Only Youtube, Vimeo, Twitter, Instagram Embeds are supported right now."
         );
     }
   },
