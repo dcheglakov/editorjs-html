@@ -120,9 +120,9 @@ const transforms: transforms = {
   },
 
   quote: ({ data }) => {
-    return `<blockquote>${data.text}</blockquote>${
-      data.caption ? `- ${data.caption}` : ``
-    }`;
+    return `<figure><blockquote>${data.text}</blockquote>${
+      data.caption ? `<figcaption>- ${data.caption}</figcaption>` : ``
+    }</figure>`;
   },
 
   code: ({ data }) => {
