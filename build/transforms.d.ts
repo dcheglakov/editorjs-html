@@ -4,6 +4,7 @@ export type transforms = {
     header(block: block): string;
     paragraph(block: block): string;
     list(block: block): string;
+    nestedlist(block: block): string;
     image(block: block): string;
     quote(block: block): string;
     code(block: block): string;

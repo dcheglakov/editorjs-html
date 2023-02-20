@@ -6,14 +6,14 @@ export default {
   input: "src/app.ts",
   output: [
     {
-      file: "build/edjsHTML.js",
-      format: "umd",
-      name: "edjsHTML",
-    },
-    {
       file: "build/edjsHTML.node.js",
       name: "edjsHTML",
       format: "cjs",
+    },
+    {
+      file: "build/edjsHTML.js",
+      name: "edjsHTML",
+      format: "umd",
     },
     {
       file: "build/edjsHTML.browser.js",

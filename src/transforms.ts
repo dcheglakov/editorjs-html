@@ -4,6 +4,7 @@ export type transforms = {
   header(block: block): string;
   paragraph(block: block): string;
   list(block: block): string;
+  nestedlist(block: block): string;
   image(block: block): string;
   quote(block: block): string;
   code(block: block): string;
@@ -45,7 +46,7 @@ export type block = {
 
 const transforms: transforms = {
   delimiter: () => {
-    return `<br/>`;
+    return `<hr />`;
   },
 
   header: ({ data }) => {
@@ -66,6 +67,24 @@ const transforms: transforms = {
   },
 
   list: ({ data }) => {
+    const listStyle = data.style === "unordered" ? "ul" : "ol";
+
+    const recursor = (items: any, listStyle: string) => {
+      const list = items.map((item: any) => {
+        if (!item.content && !item.items) return `<li>${item}</li>`;
+
+        let list = "";
+        if (item.items) list = recursor(item.items, listStyle);
+        if (item.content) return `<li> ${item.content} </li>` + list;
+      });
+
+      return `<${listStyle}>${list.join("")}</${listStyle}>`;
+    };
+
+    return recursor(data.items, listStyle);
+  },
+
+  nestedlist: ({ data }) => {
     const listStyle = data.style === "unordered" ? "ul" : "ol";
 
     const recursor = (items: any, listStyle: string) => {
