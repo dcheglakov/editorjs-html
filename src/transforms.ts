@@ -9,6 +9,7 @@ export type transforms = {
   warning(block: block): string;
   quote(block: block): string;
   code(block: block): string;
+  raw(block: block): string;
   embed(block: block): string;
 };
 
@@ -44,6 +45,7 @@ export type block = {
     height?: number;
     alignment?: "left" | "right" | "center" | "justify";
     align?: "left" | "right" | "center" | "justify";
+    html?: string;
   };
 };
 
@@ -127,6 +129,10 @@ const transforms: transforms = {
 
   code: ({ data }) => {
     return `<pre><code>${data.code}</code></pre>`;
+  },
+
+  raw: ({ data }) => {
+    return data.html ? data.html : "";
   },
 
   embed: ({ data }) => {
