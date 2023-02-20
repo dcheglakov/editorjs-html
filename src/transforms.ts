@@ -138,13 +138,13 @@ const transforms: transforms = {
   embed: ({ data }) => {
     switch (data.service) {
       case "vimeo":
-        return `<iframe src="${data.embed}" height="${data.height}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+        return `<div class="${data.service}-embed"><iframe src="${data.embed}" height="${data.height}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
       case "youtube":
-        return `<iframe width="${data.width}" height="${data.height}" src="${data.embed}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        return `<div class="${data.service}-embed"><iframe width="${data.width}" height="${data.height}" src="${data.embed}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
       case "twitter":
-        return `<blockquote class="twitter-tweet" class="embed-twitter" width="${data.width}" height="${data.height}"><a href="${data.embed}"></a></blockquote>`;
+        return `<div class="${data.service}-embed"><blockquote class="twitter-tweet" class="embed-twitter" width="${data.width}" height="${data.height}"><a href="${data.embed}"></a></blockquote></div>`;
       case "instagram":
-        return `<blockquote class="instagram-media" width="${data.width}" height="${data.height}"><a href="${data.embed}/captioned"></a></blockquote>`;
+        return `<div class="${data.service}-embed"><blockquote class="instagram-media" width="${data.width}" height="${data.height}"><a href="${data.embed}/captioned"></a></blockquote></div>`;
       default:
         throw new Error(
           "Only Youtube, Vimeo, Twitter, Instagram Embeds are supported right now."
