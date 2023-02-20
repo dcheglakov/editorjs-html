@@ -1,6 +1,6 @@
 {
   "name": "@dcheglakov/editorjs-html",
-  "version": "3.5.1",
+  "version": "3.5.2",
   "description": "editorjs parser to html",
   "main": "build/edjsHTML.node.js",
   "types": "build/app.d.ts",
