@@ -6,6 +6,7 @@ export type transforms = {
     list(block: block): string;
     nestedlist(block: block): string;
     image(block: block): string;
+    warning(block: block): string;
     quote(block: block): string;
     code(block: block): string;
     embed(block: block): string;
@@ -19,6 +20,8 @@ export type block = {
     data: {
         text?: string;
         level?: number;
+        title?: string;
+        message?: string;
         caption?: string;
         url?: string;
         file?: {
