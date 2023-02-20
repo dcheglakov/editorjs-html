@@ -18,14 +18,14 @@
   "author": "pavittarx",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.20.12",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
     "@editorjs/editorjs": "^2.26.5",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
-    "rollup": "^3.17.1",
+    "rollup": "^3.17.2",
     "typescript": "^4.9.5"
   }
 }
